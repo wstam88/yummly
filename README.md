@@ -6,6 +6,7 @@ A simple to use Yummly API wrapper for Nodejs.
     $ npm install ws-yummly
     
 ## Usage
+```js
     var Yummly = require("ws-yummly");
     
     Yummly.config({
@@ -20,7 +21,7 @@ A simple to use Yummly API wrapper for Nodejs.
 **type**: holiday, allergy, course, cuisine, diet, ingredient
  
 **display**: clean, raw (default)
- 
+```js
     Yummly.getMeta('diet', 'raw').then(function (meta) {
     	console.log(meta); 
     }).catch(function (error) {
@@ -52,69 +53,69 @@ Maximum rating a recipe can have (1-5)
 *maxRating value will be ignored when lower then minRating*
 ### allowedIngredients(string or array)
 for the list of allowed ingredients use:
-
+```js
     Yummly.getMeta('ingredients')
 ### excludedIngredients(string or array)
 for the list of allowed ingredients use:
-
+```js
     Yummly.getMeta('ingredients')
 ### allowedAllergies(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('allergy')
 ### excludedAllergies(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('allergy')
 ### allowedDiets(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('diet')
 ### excludedDiets(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('diet')
 ### allowedCuisines(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('cuisine')
 ### excludedCuisines(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('cuisine')
 ### allowedCourses(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('course')
 ### excludedCourses(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('course')
 ### allowedHolidays(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('holiday')
 ### excludedHolidays(string or array)
 for the list of possible values use:
-
+```js
     Yummly.getMeta('holiday')
 ### requirePictures(boolean)
 Wheter or not the recipes must have a image attached
 ### paginate(number)
 Paginates the result array into chunks
-    
+```js
     Yummly.query('pineapple').maxResults(40).paginate(10).get().then(function(resp){
         console.log(resp.matches); // 4 arrays within each 10 recipes
     });
 ### getURL()
 Returns the current generated url
-    
+```js
     var url = Yummly.query('pineapple').maxResults(40).paginate(10).excludedHolidays('halloween').getURL();
     
     // url: https://api.yummly.com/v1/api/recipes?_app_id=YOUR_APP_ID&_app_key=YOUR_APP_KEY&q=pineapple&maxResult=40&excludedHoliday[]=holiday^holiday-halloween
 ### getWithURL()
 Returns the current generated url
-    
+```js
     var url = https://api.yummly.com/v1/api/recipes?_app_id=YOUR_APP_ID&_app_key=YOUR_APP_KEY&q=pineapple&maxResult=10;
     
     Yummly.getWithURL(url).then(function(resp){
@@ -125,14 +126,14 @@ Returns the current generated url
     
 ### getSettings()
 Returns the current generated setting object
-    
+```js
     var settings = Yummly.query('pineapple').maxResults(40).paginate(10).excludedHolidays('halloween').getURL();
     
     // settings: { maxResults: 40, paginate: 10, excludedHolidays: [ 'halloween' ] }
 
 ### getDetails()
 Returns details for recipes
-
+```js
     var recipes = [
         'Apple-Walnut-Cranberry-Salad-898353',
         'Heavenly-Strawberry_s-650499',
@@ -148,7 +149,7 @@ Returns details for recipes
     });
     
 ## Example
-
+```js
     Yummly.query('pineapple')
         .maxTotalTimeInSeconds(1400)
         .maxResults(20)
