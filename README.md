@@ -54,62 +54,62 @@ Maximum rating a recipe can have (1-5)
 
 *maxRating value will be ignored when lower then minRating*
 ### allowedIngredients(string or array)
-for the list of allowed ingredients use:
+for a list of allowed ingredients use:
 ```js
     Yummly.getMeta('ingredients')
 ```
 ### excludedIngredients(string or array)
-for the list of allowed ingredients use:
+for a list of allowed ingredients use:
 ```js
     Yummly.getMeta('ingredients')
 ```
 ### allowedAllergies(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('allergy')
 ```
 ### excludedAllergies(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('allergy')
 ```
 ### allowedDiets(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('diet')
 ```
 ### excludedDiets(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('diet')
 ```
 ### allowedCuisines(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('cuisine')
 ```
 ### excludedCuisines(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('cuisine')
 ```
 ### allowedCourses(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('course')
 ```
 ### excludedCourses(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('course')
 ```
 ### allowedHolidays(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('holiday')
 ```
 ### excludedHolidays(string or array)
-for the list of possible values use:
+for a list of possible values use:
 ```js
     Yummly.getMeta('holiday')
 ```
