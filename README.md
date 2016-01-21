@@ -6,7 +6,7 @@ A simple to use Yummly API wrapper for Nodejs.
     $ npm install ws-yummly
     
 ## Usage
-    var Yummly = require("yummly");
+    var Yummly = require("ws-yummly");
     
     Yummly.config({
 		app_id : 'YOUR_APP_ID',
@@ -129,4 +129,43 @@ Returns the current generated setting object
     var settings = Yummly.query('pineapple').maxResults(40).paginate(10).excludedHolidays('halloween').getURL();
     
     // settings: { maxResults: 40, paginate: 10, excludedHolidays: [ 'halloween' ] }
+
+### getDetails()
+Returns details for recipes
+
+    var recipes = [
+        'Apple-Walnut-Cranberry-Salad-898353',
+        'Heavenly-Strawberry_s-650499',
+        'Chopped-Taco-Mason-Jar-Salad-1266468'
+    ];
+
+    Yummly.getDetails(recipes).then(function (resp) {
+        resp.forEach(function (recipe) {
+            console.log(recipe.name);
+        });
+    }).catch(function (error) {
+        console.log(error);
+    });
     
+## Example
+
+    Yummly.query('pineapple')
+        .maxTotalTimeInSeconds(1400)
+        .maxResults(20)
+        .allowedDiets(['Pescetarian', 'Vegan'])
+        .allowedCuisines(['asian'])
+        .minRating(3)
+        .get()
+        .then(function(resp){
+            resp.matches.forEach(function(recipe){
+                console.log(recipe.recipeName);
+            });
+        });
+
+        # Thai Shrimp and Pineapple Curry
+        # Thai Pineapple Fried Rice
+        # Asian Pineapple Sauce
+        # Thai Pineapple Fried Rice
+        # Asian Caramelized Pineapple
+        # Thai Pineapple Fried Rice
+        # ...

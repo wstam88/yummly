@@ -22,7 +22,8 @@ exports.config = function (input) {
 	}
 }
 
-var Recipe = Config.endpoints.recipe;
+const _RECIPE = Config.endpoints.recipe; 
+const _RECIPES = Config.endpoints.recipes; 
 
 var set_metadata = function(meta, data) {
 	return data;
@@ -503,5 +504,48 @@ exports.getMeta = function(input, display) {
   });
 
   return deferred.promise;
+
+}
+
+function getDetails(id){
+
+  var deferred = Q.defer();
+  var url = _RECIPE + id + Config.app_id_query;
+
+  Needle.get(url, function(error, response) {
+
+    if (!error && response.statusCode == 200) {
+
+      deferred.resolve(response.body);
+
+    }
+
+    else if(error){
+      deferred.reject(new Error(error));
+    }
+
+  });
+
+  return deferred.promise;
+}
+
+exports.getDetails = function (input) {
+
+  var deferred = Q.defer();
+  var que = [];
+
+  if(input instanceof Array){
+
+    for (var i = 0; i < input.length; i++) {
+
+      que.push(getDetails(input[i]));
+
+    };
+
+  }else if(typeof input == 'string'){
+      que.push(getDetails(input));
+  }
+
+  return Q.all(que);
 
 }
