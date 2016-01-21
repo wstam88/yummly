@@ -1,0 +1,29 @@
+{
+  "name": "ws-yummly",
+  "version": "1.0.0",
+  "description": "A wrapper for the Yummly recipe API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "yummly",
+    "wrapper",
+    "recipes",
+    "api"
+  ],
+  "author": "Wesley Stam <wstam88@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^0.26.4",
+    "lodash.chunk": "^4.0.0",
+    "needle": "^0.11.0",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
+    "mocha": "^2.3.4",
+    "validator": "^4.5.1"
+  }
+}
