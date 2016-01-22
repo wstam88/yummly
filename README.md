@@ -4,12 +4,12 @@ A simple to use Yummly API wrapper for Nodejs.
 ## Installation
 
     $ npm install ws-yummly
-    
+
 ## Usage
 
 ```js
     var Yummly = require("ws-yummly");
-    
+
     Yummly.config({
 		app_id : 'YOUR_APP_ID',
 		app_key : 'YOUR_APP_KEY',
@@ -20,22 +20,22 @@ A simple to use Yummly API wrapper for Nodejs.
 ### getMeta(type, [display])
 
 **type**: holiday, allergy, course, cuisine, diet, ingredient
- 
+
 **display**: clean, raw (default)
 ```js
     Yummly.getMeta('diet', 'raw').then(function (meta) {
-    	console.log(meta); 
+    	console.log(meta);
     }).catch(function (error) {
     	console.log(error);
     });
-    
+
     # output
     [ { id: '388',
         shortDescription: 'Lacto vegetarian',
         longDescription: 'Lacto vegetarian',
         searchValue: '388^Lacto vegetarian',
         type: 'diet',
-        localesAvailableIn: [ 'en-US' ] 
+        localesAvailableIn: [ 'en-US' ]
         ....
         ....
     }]
@@ -126,25 +126,25 @@ Paginates the result array into chunks
 Returns the current generated url
 ```js
     var url = Yummly.query('pineapple').maxResults(40).paginate(10).excludedHolidays('halloween').getURL();
-    
+
     // url: https://api.yummly.com/v1/api/recipes?_app_id=YOUR_APP_ID&_app_key=YOUR_APP_KEY&q=pineapple&maxResult=40&excludedHoliday[]=holiday^holiday-halloween
 ```
 ### getWithURL()
 Returns the current generated url
 ```js
     var url = https://api.yummly.com/v1/api/recipes?_app_id=YOUR_APP_ID&_app_key=YOUR_APP_KEY&q=pineapple&maxResult=10;
-    
+
     Yummly.getWithURL(url).then(function(resp){
         console.log(resp);
     }));
-    
+
     // url: https://api.yummly.com/v1/api/recipes?_app_id=YOUR_APP_ID&_app_key=YOUR_APP_KEY&q=pineapple&maxResult=40&excludedHoliday[]=holiday^holiday-halloween
 ```
 ### getSettings()
 Returns the current generated setting object
 ```js
     var settings = Yummly.query('pineapple').maxResults(40).paginate(10).excludedHolidays('halloween').getURL();
-    
+
     // settings: { maxResults: 40, paginate: 10, excludedHolidays: [ 'halloween' ] }
 ```
 ### getDetails()
@@ -157,6 +157,17 @@ Returns details for recipes
     ];
 
     Yummly.getDetails(recipes).then(function (resp) {
+        resp.forEach(function (recipe) {
+            console.log(recipe.name);
+        });
+    }).catch(function (error) {
+        console.log(error);
+    });
+```
+### get()
+Returns a promise with possible results
+```js
+    Yummly.query('coconut').get().then(function (resp) {
         resp.forEach(function (recipe) {
             console.log(recipe.name);
         });
